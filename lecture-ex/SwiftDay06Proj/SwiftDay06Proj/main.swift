@@ -8,6 +8,7 @@
 import Foundation
 
 print(":::: 전화번호부 ::::")
+PhoneBook().run()
 /*
 ----- MENU -----
 1)INPUT 2)OUTPUT 3)SEARCH 4)EDIT 5)DELETE 6)END
@@ -30,4 +31,4 @@ Choice: 1
  ----- 입름 검색 기능 ----
 */
 
-choiceMenuFunc().choiceMenu()
+

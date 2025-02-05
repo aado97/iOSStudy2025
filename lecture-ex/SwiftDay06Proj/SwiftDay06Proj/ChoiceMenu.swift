@@ -1,5 +1,5 @@
 //
-//  choiceMenuFunc.swift
+//  ChoiceMenu.swift
 //  SwiftDay06Proj
 //
 //  Created by 도민준 on 2/5/25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct choiceMenuFunc{
+struct ChoiceMenu {
     var menuList = """
             ----- MENU -----
             1)INPUT 2)OUTPUT 3)SEARCH 4)EDIT 5)DELETE 6)END
@@ -25,7 +25,7 @@ struct choiceMenuFunc{
             
             switch menuNum {
             case 1:
-                print("----- 입력 기능 -----")
+                Input().input()
             case 2:
                 print("----- 목록 출력 기능 -----")
             case 3:
