@@ -9,8 +9,9 @@ import SwiftUI
 
 struct LandmarkList: View {
     @Environment(ModelData.self) var modelData
-    @State private var showFovoritesOnly = false
+    @State private var showFavoritesOnly = false
     @State private var filter = FilterCategory.all
+    @State private var selectedLandmark: Landmark?
     
     enum FilterCategory: String, CaseIterable, Identifiable {
         case all = "All"
@@ -21,32 +22,39 @@ struct LandmarkList: View {
         var id: FilterCategory { self }
     }
     
-    var filteredLandmakrs: [Landmark] {
+    var filteredLandmarks: [Landmark] {
         modelData.landmarks.filter { landmark in
-            (!showFovoritesOnly || landmark.isFavorite)
+            (!showFavoritesOnly || landmark.isFavorite)
                 && (filter == .all || filter.rawValue == landmark.category.rawValue)
         }
     }
     
     var title: String {
         let title = filter == .all ? "Landmarks" : filter.rawValue
-        return showFovoritesOnly ? "Favorite \(title)" : title
+        return showFavoritesOnly ? "Favorite \(title)" : title
+    }
+    
+    var index: Int? {
+        modelData.landmarks.firstIndex(where: { $0.id == selectedLandmark?.id })
     }
     
     var body: some View {
+        @Bindable var modelData = modelData
+        
         NavigationSplitView {
-            List {
-                ForEach(filteredLandmakrs) { landmark in
+            List(selection: $selectedLandmark) {
+                ForEach(filteredLandmarks) { landmark in
                     NavigationLink {
                         LandmarkDetail(landmark: landmark)
                     } label: {
                         LandmarkRow(landmark: landmark)
                     }
+                    .tag(landmark)
                 }
             }
-            .animation(.default, value: filteredLandmakrs)
+            .animation(.default, value: filteredLandmarks)
             .navigationTitle(title)
-            .frame(minWidth: 300)
+            .frame(minWidth: 350)
             .toolbar {
                 ToolbarItem {
                     Menu {
@@ -57,7 +65,7 @@ struct LandmarkList: View {
                         }
                         .pickerStyle(.inline)
                         
-                        Toggle(isOn: $showFovoritesOnly) {
+                        Toggle(isOn: $showFavoritesOnly) {
                             Label("Favorites only", systemImage: "star.fill")
                         }
                     } label: {
@@ -68,6 +76,7 @@ struct LandmarkList: View {
         } detail: {
             Text("Select a Landmark")
         }
+        .focusedValue(\.selectedLandmark, $modelData.landmarks[index ?? 0])
     }
 }
 

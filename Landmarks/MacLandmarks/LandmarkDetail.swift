@@ -51,8 +51,8 @@ struct LandmarkDetail: View {
                         }
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
+                    }
                 }
-            }
                 
                 Divider()
                 
@@ -74,3 +74,5 @@ struct LandmarkDetail: View {
         .environment(modelData)
         .frame(width: 850, height: 700)
 }
+
+// 사이드바가 왜 짤릴까?

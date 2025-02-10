@@ -33,6 +33,8 @@
 		594406D02D4D163200622784 /* HexagonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594406CF2D4D163200622784 /* HexagonParameters.swift */; };
 		5977A87C2D58F6A100B5B33B /* LandmarkCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5977A87B2D58F6A100B5B33B /* LandmarkCommands.swift */; };
 		5977A87D2D58F6A100B5B33B /* LandmarkCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5977A87B2D58F6A100B5B33B /* LandmarkCommands.swift */; };
+		5977A87F2D58FD0300B5B33B /* LandmarksSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5977A87E2D58FD0300B5B33B /* LandmarksSettings.swift */; };
+		5977A8802D58FD0300B5B33B /* LandmarksSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5977A87E2D58FD0300B5B33B /* LandmarksSettings.swift */; };
 		5989082B2D4BB7440024CCEF /* LandmarksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5989082A2D4BB7440024CCEF /* LandmarksApp.swift */; };
 		5989082D2D4BB7440024CCEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5989082C2D4BB7440024CCEF /* ContentView.swift */; };
 		5989082F2D4BB7460024CCEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5989082E2D4BB7460024CCEF /* Assets.xcassets */; };
@@ -133,6 +135,7 @@
 		593690262D58D17300689C89 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		594406CF2D4D163200622784 /* HexagonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonParameters.swift; sourceTree = "<group>"; };
 		5977A87B2D58F6A100B5B33B /* LandmarkCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkCommands.swift; sourceTree = "<group>"; };
+		5977A87E2D58FD0300B5B33B /* LandmarksSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksSettings.swift; sourceTree = "<group>"; };
 		598908272D4BB7440024CCEF /* Landmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5989082A2D4BB7440024CCEF /* LandmarksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksApp.swift; sourceTree = "<group>"; };
 		5989082C2D4BB7440024CCEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -367,11 +370,12 @@
 			isa = PBXGroup;
 			children = (
 				59D8856F2D58E79300BB7B59 /* ContentView.swift */,
+				59D885872D58E9E500BB7B59 /* LandmarkDetail.swift */,
+				5977A87B2D58F6A100B5B33B /* LandmarkCommands.swift */,
+				5977A87E2D58FD0300B5B33B /* LandmarksSettings.swift */,
 				59D885712D58E79500BB7B59 /* Assets.xcassets */,
 				59D885762D58E79500BB7B59 /* MacLandmarks.entitlements */,
 				59D885732D58E79500BB7B59 /* Preview Content */,
-				59D885872D58E9E500BB7B59 /* LandmarkDetail.swift */,
-				5977A87B2D58F6A100B5B33B /* LandmarkCommands.swift */,
 			);
 			path = MacLandmarks;
 			sourceTree = "<group>";
@@ -548,6 +552,7 @@
 				59D8854D2D58D4F800BB7B59 /* MapView.swift in Sources */,
 				5977A87C2D58F6A100B5B33B /* LandmarkCommands.swift in Sources */,
 				59D885612D58D70400BB7B59 /* CategoryRow.swift in Sources */,
+				5977A87F2D58FD0300B5B33B /* LandmarksSettings.swift in Sources */,
 				5989082D2D4BB7440024CCEF /* ContentView.swift in Sources */,
 				593690142D585CB900689C89 /* FeatureCard.swift in Sources */,
 				59D8855F2D58D70400BB7B59 /* CategoryHome.swift in Sources */,
@@ -594,6 +599,7 @@
 				59D885822D58E81800BB7B59 /* CircleImage.swift in Sources */,
 				59D885832D58E81800BB7B59 /* LandmarkRow.swift in Sources */,
 				59D885842D58E81800BB7B59 /* MapView.swift in Sources */,
+				5977A8802D58FD0300B5B33B /* LandmarksSettings.swift in Sources */,
 				59D885852D58E81800BB7B59 /* ModelData.swift in Sources */,
 				59D885862D58E81800BB7B59 /* FavoriteButton.swift in Sources */,
 				59D885702D58E79300BB7B59 /* ContentView.swift in Sources */,
@@ -865,7 +871,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.comstudy.myapp.MacLandmarks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -892,7 +898,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.comstudy.myapp.MacLandmarks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
