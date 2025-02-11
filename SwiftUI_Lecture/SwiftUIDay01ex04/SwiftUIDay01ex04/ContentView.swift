@@ -4,14 +4,24 @@ struct ContentView: View {
     @State private var words: [String] = ["사과", "딸기", "바나나"]   // 단어를 저장할 배열
     @State private var newWord: String = ""  // 새로 입력할 단어
     @State private var wordToDelete: String = "" // 삭제할 단어
+    @State private var wordToSearch: String = "" // 검색할 단어
     @State private var message: String = "단어를 추가하세요"  // 상태 메시지
     
     func addWord() {
-        print("추가 버튼 누름", newWord)
-        // words는 State이므로 상태 값이 변경되면 자동 재랜더링.
-        words.append(newWord)
-        newWord = ""
-        message = "새 단어가 추가 되었습니다."
+        if newWord.isEmpty {
+            message = "단어를 입력하세요."
+        } else if words.contains(newWord) {
+            message = "이미 존재하는 단어입니다."
+        } else {
+            print("추가 버튼 누름", newWord)
+            // words는 State이므로 상태 값이 변경되면 자동 재랜더링.
+            withAnimation {
+                words.append(newWord)
+            }
+            
+            newWord = ""
+            message = "새 단어가 추가 되었습니다."
+        }
     }
     
     func removeWord() {
@@ -27,6 +37,14 @@ struct ContentView: View {
         }
     }
     
+    func searchWord() {
+        if let index = words.firstIndex(of: wordToSearch) {
+            message = "\(wordToSearch)는 배열의 \(index + 1)번째 위치에 있습니다."
+        } else {
+            message = "단어 목록에 \(wordToSearch)는 없습니다."
+        }
+    }
+    
     var body: some View {
         VStack {
             Text ("단어 관리 프로그램")
@@ -35,27 +53,40 @@ struct ContentView: View {
             HStack {
                 TextField("단어 입력", text: $newWord)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
                 Button("추가") {
                     addWord()
                 }
             }
             .padding()
             
-            List (words, id: \.self) { word in
-                Text(word)
+            ZStack(alignment: .bottomTrailing) {
+                List {
+                    ForEach(words, id: \.self) { word in
+                        Text(word)
+                            .transition(.opacity)
+                    }
+                }
+                Text("현재 단어 수: \(words.count)개")
+                    .padding()
             }
-            .padding()
             
             HStack {
                 TextField("단어 삭제", text: $wordToDelete)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
                 Button("삭제") {
                     removeWord()
                 }
+                .padding(.horizontal)
             }
-            .padding()
+            
+            HStack {
+                TextField("단어 검색", text: $wordToSearch)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                Button("검색") {
+                    searchWord()
+                }
+                .padding(.horizontal)
+            }
             
             Text(message)
                 .foregroundStyle(.red)
