@@ -47,7 +47,7 @@ class CalculatorViewModel: ObservableObject {
         }
     }
     
-    // 결과 버튼 탭 시, calculateSubject를 통해 계산 요청 이벤트를 보냅니다.
+    // 결과 버튼 탭 시, calculateSubject를 통해 계산 요청.
     func tappedResult() {
         calculateSubject.send()
         currentOperation = nil // 연산 초기화
